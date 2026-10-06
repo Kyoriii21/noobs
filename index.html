@@ -3,170 +3,389 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SABP Recrutement</title>
+    <title>SABP — [ DOSSIER TACTIQUE & NÉGOCIATION BNC ]</title>
     <style>
         :root {
-            --primary-green: #1b4322;
-            --accent-green: #2e7d32;
-            --dark-bg: #0f1115;
-            --text-light: #f5f5f5;
+            --bg-deep: #050a06;
+            --bg-panel: #0a140b;
+            --border-green: #15471c;
+            --border-green-light: #2b7a38;
+            --accent-yellow: #d4af37;
+            --accent-yellow-glow: rgba(212, 175, 55, 0.2);
+            --text-main: #c8dcd0;
+            --text-muted: #799a82;
+            --text-bright: #ffffff;
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Courier New', Courier, monospace;
             min-height: 100vh;
             padding: 20px;
+            background-image: 
+                linear-gradient(rgba(10, 20, 11, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%),
+                radial-gradient(circle, rgba(21, 71, 28, 0.15) 0%, transparent 80%);
+            background-size: 100% 4px, 100% 100%;
         }
 
-        .poster-container {
-            position: relative;
-            width: 100%;
-            max-width: 1000px;
-            height: 562px; /* Ratio 16:9 standard */
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(15, 17, 21, 0.85)), 
-                        url('ton_image_de_fond.jpg') center/cover no-repeat;
-            border: 3px solid var(--primary-green);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        .container {
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        /* En-tête type terminal SABP */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-green);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--text-bright);
+            letter-spacing: 2px;
+        }
+
+        .logo-title span {
+            color: var(--accent-yellow);
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-yellow);
+            text-shadow: 0 0 8px var(--accent-yellow-glow);
+        }
+
+        /* Titre principal de section */
+        .section-header {
+            text-align: center;
+            margin: 30px 0 40px 0;
+        }
+
+        .section-header h1 {
+            font-size: 2rem;
+            color: var(--accent-yellow);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px var(--accent-yellow-glow);
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Grilles et panneaux */
+        .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto 1fr auto;
-            padding: 30px;
+            gap: 25px;
+            margin-bottom: 30px;
         }
 
-        /* En-tête principal */
-        .header {
-            grid-column: 1 / -1;
-            text-align: center;
-            text-transform: uppercase;
-            border-bottom: 2px solid var(--accent-green);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
         }
 
-        .header h1 {
-            font-size: 2.5rem;
-            letter-spacing: 4px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        @media (max-width: 1100px) {
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
         }
 
-        .header h1 span {
-            color: #4caf50;
+        .panel {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-green-light);
+            border-radius: 4px;
+            padding: 25px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* Sections Contenu */
-        .section-box {
-            background: rgba(27, 67, 34, 0.45);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 8px;
-            margin: 10px;
-        }
-
-        .section-box h2 {
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            color: #4caf50;
-            margin-bottom: 12px;
-            border-left: 4px solid #4caf50;
-            padding-left: 8px;
-            letter-spacing: 1px;
-        }
-
-        .section-box ul {
-            list-style: none;
-        }
-
-        .section-box li {
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .section-box li::before {
-            content: "✓";
-            color: #4caf50;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        /* Comment postuler spécifique */
-        .apply-box p {
-            font-weight: bold;
+        .panel h3 {
+            color: var(--accent-yellow);
             font-size: 1.1rem;
-            text-align: center;
-            margin: 10px 0;
-            padding: 8px;
-            background: rgba(0,0,0,0.3);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px dashed var(--border-green);
+            padding-bottom: 8px;
+        }
+
+        .panel p, .panel li {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-main);
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        ul li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--accent-yellow);
+            font-size: 0.75rem;
+        }
+
+        /* Section des Mises en Situation (Glissade / Scrollbar interne) */
+        .scenarios-container {
+            max-height: 700px;
+            overflow-y: auto;
+            padding-right: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .scenarios-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .scenarios-container::-webkit-scrollbar-track {
+            background: var(--bg-deep);
+        }
+        .scenarios-container::-webkit-scrollbar-thumb {
+            background: var(--border-green-light);
+        }
+
+        .scenario-card {
+            background: rgba(5, 10, 6, 0.8);
+            border: 1px solid var(--border-green);
+            border-left: 4px solid var(--accent-yellow);
+            padding: 20px;
             border-radius: 4px;
         }
 
-        /* Slogan en bas */
-        .footer-slogan {
-            grid-column: 1 / -1;
-            text-align: center;
+        .scenario-number {
+            font-size: 0.75rem;
+            color: var(--accent-yellow);
+            font-weight: bold;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            font-weight: 800;
-            letter-spacing: 3px;
-            font-size: 1.1rem;
-            color: #ffffff;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-            margin-top: 15px;
-            align-self: end;
+            margin-bottom: 5px;
+        }
+
+        .scenario-title {
+            font-size: 1.05rem;
+            color: var(--text-bright);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .scenario-box {
+            background: rgba(21, 71, 28, 0.15);
+            border-left: 2px solid var(--border-green-light);
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            font-size: 0.88rem;
+        }
+
+        .scenario-question {
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px dashed rgba(212, 175, 55, 0.4);
+            padding: 10px 15px;
+            font-size: 0.88rem;
+            color: var(--text-bright);
+            font-style: italic;
+        }
+
+        /* Pied de page */
+        footer {
+            border-top: 1px solid var(--border-green);
+            padding-top: 15px;
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        footer span {
+            color: var(--accent-yellow);
         }
     </style>
 </head>
 <body>
 
-    <div class="poster-container">
+    <div class="container">
         
-        <div class="header">
-            <h1>Le <span>SABP</span> Recrute</h1>
+        <!-- EN-TÊTE -->
+        <header>
+            <div class="logo-title">SABP [ <span>PRÉSENTATION BNC</span> ]</div>
+            <nav>
+                <a href="#" class="active">Doctrine</a>
+                <a href="#">Théorie</a>
+                <a href="#">Procédures</a>
+                <a href="#">Simulations GTA RP</a>
+                <a href="#">Sécurité Frontière</a>
+            </nav>
+        </header>
+
+        <!-- SECTION TITRE -->
+        <div class="section-header">
+            <h1>Brigade des Négociateurs de Crise (BNC)</h1>
+            <p>Manuel Opérationnel Avancé, Doctrine de Négociation & Mises en Situation Tactiques GTA RP</p>
         </div>
 
-        <div class="section-box">
-            <h2>Votre Mission</h2>
-            <ul>
-                <li>Empêcher les trafics d'armes, de drogue et la contrebande.</li>
-                <li>Prévenir l'immigration irrégulière et protéger les frontières.</li>
-                <li>Maintenir l'ordre public aux frontières.</li>
-            </ul>
+        <!-- GRILLE 1 : PRÉSENTATION & MISSIONS -->
+        <div class="grid-2">
+            <div class="panel">
+                <h3>01. Doctrine & Rôle de la BNC</h3>
+                <p style="margin-bottom: 15px;">La <strong>BNC</strong> (Brigade des Négociateurs de Crise) est une unité spécialisée du <strong>San Andreas Border Patrol</strong>, conçue pour gérer la dimension humaine et communicationnelle des prises d'otages et des crises majeures aux frontières.</p>
+                <ul>
+                    <li><strong>Règle d'or :</strong> Le négociateur ne travaille jamais seul et n'est en aucun cas une unité d'assaut.</li>
+                    <li><strong>Objectif :</strong> Gagner du temps, apaiser les tensions, identifier les revendications et préserver la vie des otages et des agents du SABP.</li>
+                    <li><strong>Transition :</strong> Dès qu'une issue pacifique est compromise ou qu'un ordre d'intervention est donné, l'unité d'intervention prend le relais avec toutes les données transmises.</li>
+                </ul>
+            </div>
+
+            <div class="panel">
+                <h3>02. Mode d'Emploi des Procédures</h3>
+                <p style="margin-bottom: 15px;">Le protocole d'intervention de la BNC suit une chronologie stricte en 6 étapes clés :</p>
+                <ul>
+                    <li><strong>Étape 1 :</strong> Sécurisation immédiate du périmètre par les unités patrouilleuses.</li>
+                    <li><strong>Étape 2 :</strong> Évaluation de la menace et de l'identité des preneurs d'otages.</li>
+                    <li><strong>Étape 3 :</strong> Activation de la BNC et prise de contact radio/mégaphone.</li>
+                    <li><strong>Étape 4 :</strong> Établissement du lien de confiance et écoute active (identification des leviers).</li>
+                    <li><strong>Étape 5 :</strong> Analyse constante des revendications (concession vs ligne rouge).</li>
+                    <li><strong>Étape 6 :</strong> Transmission de l'intelligence tactique au commandement pour la décision finale.</li>
+                </ul>
+            </div>
         </div>
 
-        <div class="section-box">
-            <h2>Conditions Requises</h2>
-            <ul>
-                <li>Âge minimum : 21 ans</li>
-                <li>Pièce d'identité de plus d'un mois</li>
-                <li>Casier judiciaire vierge</li>
-                <li>Aucune amende impayée</li>
-            </ul>
+        <!-- GRILLE 2 : THÉORIE DE LA NÉGOCIATION GTA RP -->
+        <div class="grid-3">
+            <div class="panel">
+                <h3>Techniques d'Écoute Active</h3>
+                <p>Sur GTA RP, les preneurs d'otages cherchent souvent l'adrénaline. L'écoute active consiste à reformuler leurs exigences, valider leurs émotions sans céder sur le fond, et désamorcer l'agressivité verbale par un ton calme, monocorde et posé.</p>
+            </div>
+
+            <div class="panel">
+                <h3>Gestion du Facteur Temps</h3>
+                <p>Le temps est l'arme principale du négociateur. Plus la discussion dure, plus la fatigue psychologique s'installe chez le suspect, et plus l'état-major dispose de précieuses minutes pour positionner discrètement les tireurs d'élite ou préparer un plan d'extraction.</p>
+            </div>
+
+            <div class="panel">
+                <h3>Lignes Rouges & Concessions</h3>
+                <p>Définir clairement ce qui est négociable (nourriture, eau, véhicules de fuite banalisés sans armement lourd) et ce qui ne l'est jamais (libération de prisonniers dangereux, armes de guerre supplémentaires, zone d'immunité totale).</p>
+            </div>
         </div>
 
-        <div class="section-box apply-box" style="grid-column: 1 / -1; max-width: 500px; margin: 10px auto; width: 100%;">
-            <h2>Comment Postuler ?</h2>
-            <p>RDV AU SABP EST</p>
-            <p style="font-size: 0.8rem; background: none; margin: 0; color: #aaa;">OU</p>
-            <p>PÔLE EMPLOI</p>
+        <!-- SECTION MISES EN SITUATION GTA RP (AVEC GLISSADE) -->
+        <div class="panel" style="margin-bottom: 30px;">
+            <h3>03. Banque de Mises en Situation & Cas Pratiques (GTA RP)</h3>
+            <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.85rem;">Défilement interne des cas d'évaluation opérationnelle pour les futurs membres de la BNC.</p>
+
+            <div class="scenarios-container">
+                
+                <!-- CAS 01 -->
+                <div class="scenario-card">
+                    <div class="scenario-number">Cas Pratique 01</div>
+                    <div class="scenario-title">La Pression Psychologique & Exigence Immédiate</div>
+                    <div class="scenario-box"><strong>Contexte :</strong> Un preneur d'otage cagoulé pointe une arme sur la tempe d'un agent du SABP dans une station-service frontalière. Il hurle qu'il abattra l'otage dans les 60 secondes si vous ne lui fournissez pas un hélicoptère armé immédiatement.</div>
+                    <div class="scenario-question"><strong>Problématique :</strong> Comment gérez-vous le compte à rebours sans céder à la ligne rouge tout en évitant l'exécution ?</div>
+                </div>
+
+                <!-- CAS 02 -->
+                <div class="scenario-number">Cas Pratique 02</div>
+                <div class="scenario-title">Le Suspect Irrationnel / Sous Emprise</div>
+                <div class="scenario-box"><strong>Contexte :</strong> Le ravisseur semble complètement paniqué, sous l'influence évidente de substances illicites en jeu (hallucinations ou paranoia). Il change d'avis toutes les dix minutes et menace de tout faire sauter.</div>
+                <div class="scenario-question"><strong>Problématique :</strong> Quelle posture verbale adoptez-vous pour stabiliser son attention et ramener un semblant de rationalité ?</div>
+                </div>
+
+                <!-- CAS 03 -->
+                <div class="scenario-number">Cas Pratique 03</div>
+                <div class="scenario-title">Demande de Fuite avec Bouclier Humain</div>
+                <div class="scenario-box"><strong>Contexte :</strong> Les preneurs d'otages acceptent de libérer l'agent du SABP retenu, mais exigent de repartir à bord d'un véhicule blindé en ayant attaché un civil sur le capot comme bouclier humain pour traverser le barrage.</div>
+                <div class="scenario-question"><strong>Problématique :</strong> Acceptez-vous cette condition ? Quelles contre-propositions tactiques formulez-vous ?</div>
+                </div>
+
+                <!-- CAS 04 -->
+                <div class="scenario-number">Cas Pratique 04</div>
+                <div class="scenario-title">Le Silence Radio du Preneur d'Otage</div>
+                <div class="scenario-box"><strong>Contexte :</strong> Après 30 minutes de négociation fructueuse, le suspect coupe brutalement toute communication radio et ne répond plus aux appels mégaphone.</div>
+                <div class="scenario-question"><strong>Problématique :</strong> S'agit-il d'une rupture de dialogue simple, d'un piège ou d'un signal d'assaut imminent ? Quelle est la conduite à tenir pour le négociateur ?</div>
+                </div>
+
+                <!-- CAS 05 -->
+                <div class="scenario-number">Cas Pratique 05</div>
+                <div class="scenario-title">Conflit de Commandement sur le Terrain</div>
+                <div class="scenario-box"><strong>Contexte :</strong> En pleine négociation en cours, le chef des unités tactiques d'assaut souhaite lancer une brèche immédiate car "le temps presse", alors que vous étiez à deux doigts d'obtenir la reddition volontaire.</div>
+                <div class="scenario-question"><strong>Problématique :</strong> Comment gérez-vous la coordination avec la hiérarchie et défendez-vous l'option pacifique ?</div>
+                </div>
+
+                <!-- CAS 06 -->
+                <div class="scenario-number">Cas Pratique 06</div>
+                <div class="scenario-title">Infiltration d'un Faux Otage</div>
+                <div class="scenario-box"><strong>Contexte :</strong> Un individu sort en affirmant être un otage libéré par erreur. Cependant, vos observations aux jumelles suggèrent qu'il pourrait s'agir d'un complice cherchant à exfiltrer des armes ou à espionner vos positions.</div>
+                <div class="scenario-question"><strong>Problématique :</strong> Procédure de contrôle de sécurité à appliquer sans compromettre la confiance des autres otages restants ?</div>
+                </div>
+
+                <!-- CAS 07 -->
+                <div class="scenario-number">Cas Pratique 07</div>
+                <div class="scenario-title">Revendications Politiques ou Frontalières</div>
+                <div class="scenario-box"><strong>Contexte :</strong> Le preneur d'otage se revendique d'un groupe dissident contestant l'autorité du SABP sur la zone frontalière et exige la diffusion d'un manifeste en direct sur les ondes publiques de l'état.</div>
+                <div class="scenario-question"><strong>Problématique :</strong> Comment traitez-vous une exigence de communication médiatique en plein roleplay ?</div>
+                </div>
+
+                <!-- CAS 08 -->
+                <div class="scenario-number">Cas Pratique 08</div>
+                <div class="scenario-title">Le Piège de la Reddition Feinte</div>
+                <div class="scenario-box"><strong>Contexte :</strong> Le suspect dépose son arme principale au sol et s'avance les mains en l'air pour se rendre. Au moment où l'équipe s'approche pour le menotter, il sort une arme dissimulée à la cheville.</div>
+                <div class="scenario-question"><strong>Problématique :</strong> Quelles leçons de sécurité tirez-vous de cette tentative de compromission pour les protocoles d'approche ?</div>
+                </div>
+
+            </div>
         </div>
 
-        <div class="footer-slogan">
-            Votre courage, notre force.
-        </div>
+        <!-- PIED DE PAGE -->
+        <footer>
+            <div>[ <span>BNC ACTIVE</span> ] &bull; SYSTÈME DE FORMATION OPÉRATIONNEL</div>
+            <div>SABP &mdash; SAN ANDREAS BORDER PATROL &bull; USAGE INTERNE</div>
+        </footer>
 
     </div>
 
