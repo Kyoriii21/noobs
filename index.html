@@ -172,7 +172,7 @@
         .scenarios-container {
             max-height: 700px;
             overflow-y: auto;
-            padding-right: 10px;
+            padding-right: 12px;
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -186,11 +186,13 @@
         }
         .scenarios-container::-webkit-scrollbar-thumb {
             background: var(--border-green-light);
+            border-radius: 3px;
         }
 
+        /* Carte de cas pratique parfaitement alignée et encadrée */
         .scenario-card {
-            background: rgba(5, 10, 6, 0.8);
-            border: 1px solid var(--border-green);
+            background: rgba(5, 10, 6, 0.9);
+            border: 1px solid var(--border-green-light);
             border-left: 4px solid var(--accent-yellow);
             padding: 20px;
             border-radius: 4px;
@@ -202,31 +204,36 @@
             font-weight: bold;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
 
         .scenario-title {
             font-size: 1.05rem;
             color: var(--text-bright);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-weight: bold;
         }
 
         .scenario-box {
-            background: rgba(21, 71, 28, 0.15);
-            border-left: 2px solid var(--border-green-light);
-            padding: 10px 15px;
-            margin-bottom: 10px;
+            background: rgba(21, 71, 28, 0.2);
+            border: 1px solid var(--border-green);
+            border-left: 3px solid var(--accent-yellow);
+            padding: 12px 15px;
+            margin-bottom: 12px;
+            border-radius: 3px;
             font-size: 0.88rem;
+            line-height: 1.5;
         }
 
         .scenario-question {
-            background: rgba(212, 175, 55, 0.05);
-            border: 1px dashed rgba(212, 175, 55, 0.4);
-            padding: 10px 15px;
+            background: rgba(212, 175, 55, 0.04);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            padding: 12px 15px;
+            border-radius: 3px;
             font-size: 0.88rem;
             color: var(--text-bright);
             font-style: italic;
+            line-height: 1.5;
         }
 
         /* Pied de page */
@@ -259,7 +266,7 @@
                 <a href="#" class="active">Doctrine</a>
                 <a href="#">Théorie</a>
                 <a href="#">Procédures</a>
-                <a href="#">Simulations GTA RP</a>
+                <a href="#">Simulations</a>
                 <a href="#">Sécurité Frontière</a>
             </nav>
         </header>
@@ -267,7 +274,7 @@
         <!-- SECTION TITRE -->
         <div class="section-header">
             <h1>Brigade des Négociateurs de Crise (BNC)</h1>
-            <p>Manuel Opérationnel Avancé, Doctrine de Négociation & Mises en Situation Tactiques GTA RP</p>
+            <p>Manuel Opérationnel Avancé, Doctrine de Négociation & Mises en Situation Tactiques</p>
         </div>
 
         <!-- GRILLE 1 : PRÉSENTATION & MISSIONS -->
@@ -296,11 +303,11 @@
             </div>
         </div>
 
-        <!-- GRILLE 2 : THÉORIE DE LA NÉGOCIATION GTA RP -->
+        <!-- GRILLE 2 : THÉORIE DE LA NÉGOCIATION -->
         <div class="grid-3">
             <div class="panel">
                 <h3>Techniques d'Écoute Active</h3>
-                <p>Sur GTA RP, les preneurs d'otages cherchent souvent l'adrénaline. L'écoute active consiste à reformuler leurs exigences, valider leurs émotions sans céder sur le fond, et désamorcer l'agressivité verbale par un ton calme, monocorde et posé.</p>
+                <p>Les preneurs d'otages cherchent souvent l'attention et la décharge émotionnelle. L'écoute active consiste à reformuler leurs exigences, valider leurs états d'urgence sans céder sur le fond, et désamorcer l'agressivité verbale par un ton calme, monocorde et posé.</p>
             </div>
 
             <div class="panel">
@@ -310,13 +317,13 @@
 
             <div class="panel">
                 <h3>Lignes Rouges & Concessions</h3>
-                <p>Définir clairement ce qui est négociable (nourriture, eau, véhicules de fuite banalisés sans armement lourd) et ce qui ne l'est jamais (libération de prisonniers dangereux, armes de guerre supplémentaires, zone d'immunité totale).</p>
+                <p>Définir clairement ce qui est négociable (ravitaillement de base, véhicules de fuite standard sans armement lourd) et ce qui ne l'est jamais (libération de prisonniers dangereux, armes de guerre supplémentaires, zone d'immunité totale).</p>
             </div>
         </div>
 
-        <!-- SECTION MISES EN SITUATION GTA RP (AVEC GLISSADE) -->
+        <!-- SECTION MISES EN SITUATION (AVEC GLISSADE) -->
         <div class="panel" style="margin-bottom: 30px;">
-            <h3>03. Banque de Mises en Situation & Cas Pratiques (GTA RP)</h3>
+            <h3>03. Banque de Mises en Situation & Cas Pratiques</h3>
             <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.85rem;">Défilement interne des cas d'évaluation opérationnelle pour les futurs membres de la BNC.</p>
 
             <div class="scenarios-container">
@@ -330,52 +337,59 @@
                 </div>
 
                 <!-- CAS 02 -->
-                <div class="scenario-number">Cas Pratique 02</div>
-                <div class="scenario-title">Le Suspect Irrationnel / Sous Emprise</div>
-                <div class="scenario-box"><strong>Contexte :</strong> Le ravisseur semble complètement paniqué, sous l'influence évidente de substances illicites en jeu (hallucinations ou paranoia). Il change d'avis toutes les dix minutes et menace de tout faire sauter.</div>
-                <div class="scenario-question"><strong>Problématique :</strong> Quelle posture verbale adoptez-vous pour stabiliser son attention et ramener un semblant de rationalité ?</div>
+                <div class="scenario-card">
+                    <div class="scenario-number">Cas Pratique 02</div>
+                    <div class="scenario-title">Le Suspect Irrationnel / Instable</div>
+                    <div class="scenario-box"><strong>Contexte :</strong> Le ravisseur semble complètement paniqué, sous l'influence évidente de substances ou de troubles aigus. Il change d'avis toutes les dix minutes et menace de tout faire sauter de manière imprévisible.</div>
+                    <div class="scenario-question"><strong>Problématique :</strong> Quelle posture verbale adoptez-vous pour stabiliser son attention et ramener un semblant de rationalité ?</div>
                 </div>
 
                 <!-- CAS 03 -->
-                <div class="scenario-number">Cas Pratique 03</div>
-                <div class="scenario-title">Demande de Fuite avec Bouclier Humain</div>
-                <div class="scenario-box"><strong>Contexte :</strong> Les preneurs d'otages acceptent de libérer l'agent du SABP retenu, mais exigent de repartir à bord d'un véhicule blindé en ayant attaché un civil sur le capot comme bouclier humain pour traverser le barrage.</div>
-                <div class="scenario-question"><strong>Problématique :</strong> Acceptez-vous cette condition ? Quelles contre-propositions tactiques formulez-vous ?</div>
+                <div class="scenario-card">
+                    <div class="scenario-number">Cas Pratique 03</div>
+                    <div class="scenario-title">Demande de Fuite avec Bouclier Humain</div>
+                    <div class="scenario-box"><strong>Contexte :</strong> Les preneurs d'otages acceptent de libérer l'agent du SABP retenu, mais exigent de repartir à bord d'un véhicule blindé en ayant attaché un civil sur le capot comme bouclier humain pour traverser le barrage.</div>
+                    <div class="scenario-question"><strong>Problématique :</strong> Acceptez-vous cette condition ? Quelles contre-propositions tactiques formulez-vous ?</div>
                 </div>
 
                 <!-- CAS 04 -->
-                <div class="scenario-number">Cas Pratique 04</div>
-                <div class="scenario-title">Le Silence Radio du Preneur d'Otage</div>
-                <div class="scenario-box"><strong>Contexte :</strong> Après 30 minutes de négociation fructueuse, le suspect coupe brutalement toute communication radio et ne répond plus aux appels mégaphone.</div>
-                <div class="scenario-question"><strong>Problématique :</strong> S'agit-il d'une rupture de dialogue simple, d'un piège ou d'un signal d'assaut imminent ? Quelle est la conduite à tenir pour le négociateur ?</div>
+                <div class="scenario-card">
+                    <div class="scenario-number">Cas Pratique 04</div>
+                    <div class="scenario-title">Le Silence Radio du Preneur d'Otage</div>
+                    <div class="scenario-box"><strong>Contexte :</strong> Après 30 minutes de négociation fructueuse, le suspect coupe brutalement toute communication radio et ne répond plus aux appels mégaphone.</div>
+                    <div class="scenario-question"><strong>Problématique :</strong> S'agit-il d'une rupture de dialogue simple, d'un piège ou d'un signal d'assaut imminent ? Quelle est la conduite à tenir pour le négociateur ?</div>
                 </div>
 
                 <!-- CAS 05 -->
-                <div class="scenario-number">Cas Pratique 05</div>
-                <div class="scenario-title">Conflit de Commandement sur le Terrain</div>
-                <div class="scenario-box"><strong>Contexte :</strong> En pleine négociation en cours, le chef des unités tactiques d'assaut souhaite lancer une brèche immédiate car "le temps presse", alors que vous étiez à deux doigts d'obtenir la reddition volontaire.</div>
-                <div class="scenario-question"><strong>Problématique :</strong> Comment gérez-vous la coordination avec la hiérarchie et défendez-vous l'option pacifique ?</div>
+                <div class="scenario-card">
+                    <div class="scenario-number">Cas Pratique 05</div>
+                    <div class="scenario-title">Conflit de Commandement sur le Terrain</div>
+                    <div class="scenario-box"><strong>Contexte :</strong> En pleine négociation en cours, le chef des unités tactiques d'assaut souhaite lancer une brèche immédiate car "le temps presse", alors que vous étiez à deux doigts d'obtenir la reddition volontaire.</div>
+                    <div class="scenario-question"><strong>Problématique :</strong> Comment gérez-vous la coordination avec la hiérarchie et défendez-vous l'option pacifique ?</div>
                 </div>
 
                 <!-- CAS 06 -->
-                <div class="scenario-number">Cas Pratique 06</div>
-                <div class="scenario-title">Infiltration d'un Faux Otage</div>
-                <div class="scenario-box"><strong>Contexte :</strong> Un individu sort en affirmant être un otage libéré par erreur. Cependant, vos observations aux jumelles suggèrent qu'il pourrait s'agir d'un complice cherchant à exfiltrer des armes ou à espionner vos positions.</div>
-                <div class="scenario-question"><strong>Problématique :</strong> Procédure de contrôle de sécurité à appliquer sans compromettre la confiance des autres otages restants ?</div>
+                <div class="scenario-card">
+                    <div class="scenario-number">Cas Pratique 06</div>
+                    <div class="scenario-title">Infiltration d'un Faux Otage</div>
+                    <div class="scenario-box"><strong>Contexte :</strong> Un individu sort en affirmant être un otage libéré par erreur. Cependant, vos observations aux jumelles suggèrent qu'il pourrait s'agir d'un complice cherchant à exfiltrer des armes ou à espionner vos positions.</div>
+                    <div class="scenario-question"><strong>Problématique :</strong> Procédure de contrôle de sécurité à appliquer sans compromettre la confiance des autres otages restants ?</div>
                 </div>
 
                 <!-- CAS 07 -->
-                <div class="scenario-number">Cas Pratique 07</div>
-                <div class="scenario-title">Revendications Politiques ou Frontalières</div>
-                <div class="scenario-box"><strong>Contexte :</strong> Le preneur d'otage se revendique d'un groupe dissident contestant l'autorité du SABP sur la zone frontalière et exige la diffusion d'un manifeste en direct sur les ondes publiques de l'état.</div>
-                <div class="scenario-question"><strong>Problématique :</strong> Comment traitez-vous une exigence de communication médiatique en plein roleplay ?</div>
+                <div class="scenario-card">
+                    <div class="scenario-number">Cas Pratique 07</div>
+                    <div class="scenario-title">Revendications Politiques ou Frontalières</div>
+                    <div class="scenario-box"><strong>Contexte :</strong> Le preneur d'otage se revendique d'un groupe dissident contestant l'autorité du SABP sur la zone frontalière et exige la diffusion d'un manifeste en direct sur les ondes publiques de l'état.</div>
+                    <div class="scenario-question"><strong>Problématique :</strong> Comment traitez-vous une exigence de communication médiatique en pleine gestion de crise ?</div>
                 </div>
 
                 <!-- CAS 08 -->
-                <div class="scenario-number">Cas Pratique 08</div>
-                <div class="scenario-title">Le Piège de la Reddition Feinte</div>
-                <div class="scenario-box"><strong>Contexte :</strong> Le suspect dépose son arme principale au sol et s'avance les mains en l'air pour se rendre. Au moment où l'équipe s'approche pour le menotter, il sort une arme dissimulée à la cheville.</div>
-                <div class="scenario-question"><strong>Problématique :</strong> Quelles leçons de sécurité tirez-vous de cette tentative de compromission pour les protocoles d'approche ?</div>
+                <div class="scenario-card">
+                    <div class="scenario-number">Cas Pratique 08</div>
+                    <div class="scenario-title">Le Piège de la Reddition Feinte</div>
+                    <div class="scenario-box"><strong>Contexte :</strong> Le suspect dépose son arme principale au sol et s'avance les mains en l'air pour se rendre. Au moment où l'équipe s'approche pour le menotter, il sort une arme dissimulée à la cheville.</div>
+                    <div class="scenario-question"><strong>Problématique :</strong> Quelles leçons de sécurité tirez-vous de cette tentative de compromission pour les protocoles d'approche ?</div>
                 </div>
 
             </div>
@@ -383,7 +397,7 @@
 
         <!-- PIED DE PAGE -->
         <footer>
-            <div>[ <span>BNC ACTIVE</span> ] &bull; SYSTÈME DE FORMATION OPÉRATIONNEL</div>
+            <div>[ <span>BNC ACTIVE</span> ] &bull; SYSTÈME DE FORMATION OPÉRATIONNELLE</div>
             <div>SABP &mdash; SAN ANDREAS BORDER PATROL &bull; USAGE INTERNE</div>
         </footer>
 
