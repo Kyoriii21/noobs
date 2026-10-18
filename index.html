@@ -189,7 +189,7 @@
             border-radius: 3px;
         }
 
-        /* Carte de cas pratique parfaitement alignée et encadrée */
+        /* Carte de cas pratique */
         .scenario-card {
             background: rgba(5, 10, 6, 0.9);
             border: 1px solid var(--border-green-light);
@@ -198,20 +198,50 @@
             border-radius: 4px;
         }
 
+        .scenario-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
         .scenario-number {
             font-size: 0.75rem;
             color: var(--accent-yellow);
             font-weight: bold;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 6px;
+        }
+
+        .scoring-badge {
+            font-size: 0.75rem;
+            color: var(--accent-yellow);
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--accent-yellow);
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
         .scenario-title {
             font-size: 1.05rem;
             color: var(--text-bright);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             font-weight: bold;
+        }
+
+        .theory-link-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: rgba(21, 71, 28, 0.3);
+            border: 1px solid var(--border-green);
+            padding: 2px 8px;
+            border-radius: 3px;
+            margin-bottom: 12px;
         }
 
         .scenario-box {
@@ -263,11 +293,11 @@
         <header>
             <div class="logo-title">SABP [ <span>PRÉSENTATION BNC</span> ]</div>
             <nav>
-                <a href="#" class="active">Doctrine</a>
-                <a href="#">Théorie</a>
-                <a href="#">Procédures</a>
-                <a href="#">Simulations</a>
-                <a href="#">Sécurité Frontière</a>
+                <a href="#doctrine" class="active">Doctrine</a>
+                <a href="#theorie">Théorie</a>
+                <a href="#procedures">Procédures</a>
+                <a href="#simulations">Simulations</a>
+                <a href="#securite">Sécurité Frontière</a>
             </nav>
         </header>
 
@@ -278,7 +308,7 @@
         </div>
 
         <!-- GRILLE 1 : PRÉSENTATION & MISSIONS -->
-        <div class="grid-2">
+        <div class="grid-2" id="doctrine">
             <div class="panel">
                 <h3>01. Doctrine & Rôle de la BNC</h3>
                 <p style="margin-bottom: 15px;">La <strong>BNC</strong> (Brigade des Négociateurs de Crise) est une unité spécialisée du <strong>San Andreas Border Patrol</strong>, conçue pour gérer la dimension humaine et communicationnelle des prises d'otages concernant nos agents ou sur nos frontières.</p>
@@ -289,7 +319,7 @@
                 </ul>
             </div>
 
-            <div class="panel">
+            <div class="panel" id="procedures">
                 <h3>02. Mode d'Emploi des Procédures</h3>
                 <p style="margin-bottom: 15px;">Le protocole d'intervention de la BNC suit une chronologie stricte en 6 étapes clés :</p>
                 <ul>
@@ -304,7 +334,7 @@
         </div>
 
         <!-- GRILLE 2 : THÉORIE DE LA NÉGOCIATION & RÈGLE FONDAMENTALE -->
-        <div class="grid-3">
+        <div class="grid-3" id="theorie">
             <div class="panel">
                 <h3>Techniques d'Écoute Active</h3>
                 <p>Les preneurs d'otages cherchent souvent l'attention et la décharge émotionnelle. L'écoute active consiste à reformuler leurs exigences, valider leurs états d'urgence sans céder sur le fond, et désamorcer l'agressivité verbale par un ton calme, monocorde et posé.</p>
@@ -321,73 +351,108 @@
             </div>
         </div>
 
-        <!-- SECTION MISES EN SITUATION (AVEC GLISSADE) -->
-        <div class="panel" style="margin-bottom: 30px;">
+        <!-- SECTION MISES EN SITUATION (AVEC GLISSADE & COMPTABILISATION DU BAREME) -->
+        <div class="panel" id="simulations" style="margin-bottom: 30px;">
             <h3>03. Banque de Mises en Situation & Cas Pratiques</h3>
-            <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.85rem;">Défilement interne des cas d'évaluation opérationnelle pour les futurs membres de la BNC (Accessible dès le grade de Sénior Officier, sang-froid et bonne éloquence requis).</p>
+            <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.85rem;">
+                Défilement interne des cas d'évaluation opérationnelle pour les futurs membres de la BNC.<br>
+                <strong>Barème officiel par question :</strong> 0 pt (Échec / Erreur tactique) &bull; 0.5 pt (Incomplet / Réponse partielle) &bull; 1 pt (Validé / Réponse conforme).
+            </p>
 
             <div class="scenarios-container">
                 
                 <!-- CAS 01 -->
                 <div class="scenario-card">
-                    <div class="scenario-number">Cas Pratique 01</div>
+                    <div class="scenario-header-flex">
+                        <span class="scenario-number">Cas Pratique 01</span>
+                        <span class="scoring-badge">Barème : 0 | 0.5 | 1 Pt</span>
+                    </div>
                     <div class="scenario-title">La Pression Psychologique & Exigence Immédiate</div>
+                    <div class="theory-link-tag">Lien Théorique : Lignes Rouges & Concessions</div>
                     <div class="scenario-box"><strong>Contexte :</strong> Un preneur d'otage cagoulé pointe une arme sur la tempe d'un agent du SABP dans une station-service frontalière. Il hurle qu'il abattra l'otage dans les 60 secondes si vous ne lui fournissez pas un hélicoptère armé immédiatement.</div>
                     <div class="scenario-question"><strong>Problématique :</strong> Comment gérez-vous le compte à rebours sans céder à la ligne rouge tout en évitant l'exécution ?</div>
                 </div>
 
                 <!-- CAS 02 -->
                 <div class="scenario-card">
-                    <div class="scenario-number">Cas Pratique 02</div>
+                    <div class="scenario-header-flex">
+                        <span class="scenario-number">Cas Pratique 02</span>
+                        <span class="scoring-badge">Barème : 0 | 0.5 | 1 Pt</span>
+                    </div>
                     <div class="scenario-title">Le Suspect Irrationnel / Instable</div>
+                    <div class="theory-link-tag">Lien Théorique : Techniques d'Écoute Active</div>
                     <div class="scenario-box"><strong>Contexte :</strong> Le ravisseur semble complètement paniqué, sous l'influence évidente de substances ou de troubles aigus. Il change d'avis toutes les dix minutes et menace de tout faire sauter de manière imprévisible.</div>
                     <div class="scenario-question"><strong>Problématique :</strong> Quelle posture verbale adoptez-vous pour stabiliser son attention et ramener un semblant de rationalité ?</div>
                 </div>
 
                 <!-- CAS 03 -->
                 <div class="scenario-card">
-                    <div class="scenario-number">Cas Pratique 03</div>
+                    <div class="scenario-header-flex">
+                        <span class="scenario-number">Cas Pratique 03</span>
+                        <span class="scoring-badge">Barème : 0 | 0.5 | 1 Pt</span>
+                    </div>
                     <div class="scenario-title">Demande de Fuite avec Bouclier Humain</div>
+                    <div class="theory-link-tag">Lien Théorique : Règle Fondamentale de Résolution</div>
                     <div class="scenario-box"><strong>Contexte :</strong> Les preneurs d'otages acceptent de libérer l'agent du SABP retenu, mais exigent de repartir à bord d'un véhicule blindé en ayant attaché un civil sur le capot comme bouclier humain pour traverser le barrage.</div>
                     <div class="scenario-question"><strong>Problématique :</strong> Acceptez-vous cette condition ? Quelles contre-propositions tactiques formulez-vous ?</div>
                 </div>
 
                 <!-- CAS 04 -->
                 <div class="scenario-card">
-                    <div class="scenario-number">Cas Pratique 04</div>
+                    <div class="scenario-header-flex">
+                        <span class="scenario-number">Cas Pratique 04</span>
+                        <span class="scoring-badge">Barème : 0 | 0.5 | 1 Pt</span>
+                    </div>
                     <div class="scenario-title">Le Silence Radio du Preneur d'Otage</div>
+                    <div class="theory-link-tag">Lien Théorique : Mode d'Emploi des Procédures (Étape 3 & 4)</div>
                     <div class="scenario-box"><strong>Contexte :</strong> Après 30 minutes de négociation fructueuse, le suspect coupe brutalement toute communication radio et ne répond plus aux appels mégaphone.</div>
                     <div class="scenario-question"><strong>Problématique :</strong> S'agit-il d'une rupture de dialogue simple, d'un piège ou d'un signal d'assaut imminent ? Quelle est la conduite à tenir pour le négociateur ?</div>
                 </div>
 
                 <!-- CAS 05 -->
                 <div class="scenario-card">
-                    <div class="scenario-number">Cas Pratique 05</div>
+                    <div class="scenario-header-flex">
+                        <span class="scenario-number">Cas Pratique 05</span>
+                        <span class="scoring-badge">Barème : 0 | 0.5 | 1 Pt</span>
+                    </div>
                     <div class="scenario-title">Conflit de Commandement sur le Terrain</div>
+                    <div class="theory-link-tag">Lien Théorique : Doctrine & Rôle de la BNC (Transition BRA)</div>
                     <div class="scenario-box"><strong>Contexte :</strong> En pleine négociation en cours, le chef des unités tactiques d'assaut souhaite lancer une brèche immédiate car "le temps presse", alors que vous étiez à deux doigts d'obtenir la reddition volontaire.</div>
                     <div class="scenario-question"><strong>Problématique :</strong> Comment gérez-vous la coordination avec la hiérarchie et défendez-vous l'option pacifique ?</div>
                 </div>
 
                 <!-- CAS 06 -->
                 <div class="scenario-card">
-                    <div class="scenario-number">Cas Pratique 06</div>
+                    <div class="scenario-header-flex">
+                        <span class="scenario-number">Cas Pratique 06</span>
+                        <span class="scoring-badge">Barème : 0 | 0.5 | 1 Pt</span>
+                    </div>
                     <div class="scenario-title">Infiltration d'un Faux Otage</div>
+                    <div class="theory-link-tag">Lien Théorique : Mode d'Emploi des Procédures (Étape 2 & 5)</div>
                     <div class="scenario-box"><strong>Contexte :</strong> Un individu sort en affirmant être un otage libéré par erreur. Cependant, vos observations aux jumelles suggèrent qu'il pourrait s'agir d'un complice cherchant à exfiltrer des armes ou à espionner vos positions.</div>
                     <div class="scenario-question"><strong>Problématique :</strong> Procédure de contrôle de sécurité à appliquer sans compromettre la confiance des autres otages restants ?</div>
                 </div>
 
                 <!-- CAS 07 -->
                 <div class="scenario-card">
-                    <div class="scenario-number">Cas Pratique 07</div>
+                    <div class="scenario-header-flex">
+                        <span class="scenario-number">Cas Pratique 07</span>
+                        <span class="scoring-badge">Barème : 0 | 0.5 | 1 Pt</span>
+                    </div>
                     <div class="scenario-title">Revendications Politiques ou Frontalières</div>
+                    <div class="theory-link-tag">Lien Théorique : Lignes Rouges & Concessions</div>
                     <div class="scenario-box"><strong>Contexte :</strong> Le preneur d'otage se revendique d'un groupe dissident contestant l'autorité du SABP sur la zone frontalière et exige la diffusion d'un manifeste en direct sur les ondes publiques de l'état.</div>
                     <div class="scenario-question"><strong>Problématique :</strong> Comment traitez-vous une exigence de communication médiatique en pleine gestion de crise ?</div>
                 </div>
 
                 <!-- CAS 08 -->
                 <div class="scenario-card">
-                    <div class="scenario-number">Cas Pratique 08</div>
+                    <div class="scenario-header-flex">
+                        <span class="scenario-number">Cas Pratique 08</span>
+                        <span class="scoring-badge">Barème : 0 | 0.5 | 1 Pt</span>
+                    </div>
                     <div class="scenario-title">Le Piège de la Reddition Feinte</div>
+                    <div class="theory-link-tag">Lien Théorique : Règle Fondamentale de Résolution</div>
                     <div class="scenario-box"><strong>Contexte :</strong> Le suspect dépose son arme principale au sol et s'avance les mains en l'air pour se rendre. Au moment où l'équipe s'approche pour le menotter, il sort une arme dissimulée à la cheville.</div>
                     <div class="scenario-question"><strong>Problématique :</strong> Quelles leçons de sécurité tirez-vous de cette tentative de compromission pour les protocoles d'approche ?</div>
                 </div>
