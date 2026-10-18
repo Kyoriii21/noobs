@@ -83,10 +83,41 @@
             text-shadow: 0 0 8px var(--accent-yellow-glow);
         }
 
+        /* Encart Sticky Score Total */
+        .score-counter-widget {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            background: rgba(10, 20, 11, 0.95);
+            border: 1px solid var(--accent-yellow);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+            padding: 12px 20px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            backdrop-filter: blur(5px);
+        }
+
+        .score-title {
+            font-size: 0.9rem;
+            color: var(--text-bright);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .score-value {
+            font-size: 1.4rem;
+            color: var(--accent-yellow);
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
         /* Titre principal de section */
         .section-header {
             text-align: center;
-            margin: 30px 0 40px 0;
+            margin: 20px 0 30px 0;
         }
 
         .section-header h1 {
@@ -168,9 +199,9 @@
             font-size: 0.75rem;
         }
 
-        /* Section des Mises en Situation (Glissade / Scrollbar interne) */
+        /* Section des Mises en Situation (Scrollbar interne) */
         .scenarios-container {
-            max-height: 700px;
+            max-height: 750px;
             overflow-y: auto;
             padding-right: 12px;
             display: flex;
@@ -215,30 +246,50 @@
             text-transform: uppercase;
         }
 
-        .scoring-badge {
+        /* Système de boutons d'évaluation */
+        .score-buttons {
+            display: flex;
+            gap: 6px;
+        }
+
+        .btn-score {
+            background: rgba(21, 71, 28, 0.3);
+            border: 1px solid var(--border-green-light);
+            color: var(--text-muted);
+            padding: 4px 10px;
+            font-family: inherit;
             font-size: 0.75rem;
-            color: var(--accent-yellow);
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid var(--accent-yellow);
-            padding: 3px 8px;
-            border-radius: 3px;
             font-weight: bold;
-            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-score:hover {
+            border-color: var(--accent-yellow);
+            color: var(--text-bright);
+        }
+
+        .btn-score.selected {
+            background: var(--accent-yellow);
+            color: #000000;
+            border-color: var(--accent-yellow);
+            box-shadow: 0 0 10px var(--accent-yellow-glow);
         }
 
         .scenario-title {
             font-size: 1.05rem;
             color: var(--text-bright);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-weight: bold;
         }
 
         .theory-link-tag {
             display: inline-block;
             font-size: 0.75rem;
-            color: var(--text-muted);
-            background: rgba(21, 71, 28, 0.3);
-            border: 1px solid var(--border-green);
+            color: var(--accent-yellow);
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.2);
             padding: 2px 8px;
             border-radius: 3px;
             margin-bottom: 12px;
@@ -301,6 +352,12 @@
             </nav>
         </header>
 
+        <!-- WIDGET SCORE TOTAL CALCULÉ AUTOMATIQUEMENT -->
+        <div class="score-counter-widget">
+            <div class="score-title">📊 Évaluation Opérationnelle &bull; Score Négociateur :</div>
+            <div class="score-value"><span id="total-score">0.0</span> / 8.0 <span id="score-percent" style="font-size: 0.9rem; color: var(--text-muted);">(0%)</span></div>
+        </div>
+
         <!-- SECTION TITRE -->
         <div class="section-header">
             <h1>Brigade des Négociateurs de Crise (BNC)</h1>
@@ -351,12 +408,12 @@
             </div>
         </div>
 
-        <!-- SECTION MISES EN SITUATION (AVEC GLISSADE & COMPTABILISATION DU BAREME) -->
+        <!-- SECTION MISES EN SITUATION (AVEC BOUTONS CLIQUABLES ET CALCUL AUTOMATIQUE) -->
         <div class="panel" id="simulations" style="margin-bottom: 30px;">
             <h3>03. Banque de Mises en Situation & Cas Pratiques</h3>
             <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.85rem;">
-                Défilement interne des cas d'évaluation opérationnelle pour les futurs membres de la BNC.<br>
-                <strong>Barème officiel par question :</strong> 0 pt (Échec / Erreur tactique) &bull; 0.5 pt (Incomplet / Réponse partielle) &bull; 1 pt (Validé / Réponse conforme).
+                Attribuez une note à chaque cas en cliquant sur les boutons d'évaluation ci-dessous.<br>
+                <strong>Système de points :</strong> 0 pt (Échec / Non conforme) &bull; 0.5 pt (Incomplet) &bull; 1 pt (Valide / Parfait).
             </p>
 
             <div class="scenarios-container">
@@ -365,7 +422,11 @@
                 <div class="scenario-card">
                     <div class="scenario-header-flex">
                         <span class="scenario-number">Cas Pratique 01</span>
-                        <span class="scoring-badge">Barème : 0 | 0.5 | 1 Pt</span>
+                        <div class="score-buttons" data-case="1">
+                            <button class="btn-score" onclick="setScore(1, 0, this)">0 pt</button>
+                            <button class="btn-score" onclick="setScore(1, 0.5, this)">0.5 pt</button>
+                            <button class="btn-score" onclick="setScore(1, 1, this)">1 pt</button>
+                        </div>
                     </div>
                     <div class="scenario-title">La Pression Psychologique & Exigence Immédiate</div>
                     <div class="theory-link-tag">Lien Théorique : Lignes Rouges & Concessions</div>
@@ -377,7 +438,11 @@
                 <div class="scenario-card">
                     <div class="scenario-header-flex">
                         <span class="scenario-number">Cas Pratique 02</span>
-                        <span class="scoring-badge">Barème : 0 | 0.5 | 1 Pt</span>
+                        <div class="score-buttons" data-case="2">
+                            <button class="btn-score" onclick="setScore(2, 0, this)">0 pt</button>
+                            <button class="btn-score" onclick="setScore(2, 0.5, this)">0.5 pt</button>
+                            <button class="btn-score" onclick="setScore(2, 1, this)">1 pt</button>
+                        </div>
                     </div>
                     <div class="scenario-title">Le Suspect Irrationnel / Instable</div>
                     <div class="theory-link-tag">Lien Théorique : Techniques d'Écoute Active</div>
@@ -389,7 +454,11 @@
                 <div class="scenario-card">
                     <div class="scenario-header-flex">
                         <span class="scenario-number">Cas Pratique 03</span>
-                        <span class="scoring-badge">Barème : 0 | 0.5 | 1 Pt</span>
+                        <div class="score-buttons" data-case="3">
+                            <button class="btn-score" onclick="setScore(3, 0, this)">0 pt</button>
+                            <button class="btn-score" onclick="setScore(3, 0.5, this)">0.5 pt</button>
+                            <button class="btn-score" onclick="setScore(3, 1, this)">1 pt</button>
+                        </div>
                     </div>
                     <div class="scenario-title">Demande de Fuite avec Bouclier Humain</div>
                     <div class="theory-link-tag">Lien Théorique : Règle Fondamentale de Résolution</div>
@@ -401,7 +470,11 @@
                 <div class="scenario-card">
                     <div class="scenario-header-flex">
                         <span class="scenario-number">Cas Pratique 04</span>
-                        <span class="scoring-badge">Barème : 0 | 0.5 | 1 Pt</span>
+                        <div class="score-buttons" data-case="4">
+                            <button class="btn-score" onclick="setScore(4, 0, this)">0 pt</button>
+                            <button class="btn-score" onclick="setScore(4, 0.5, this)">0.5 pt</button>
+                            <button class="btn-score" onclick="setScore(4, 1, this)">1 pt</button>
+                        </div>
                     </div>
                     <div class="scenario-title">Le Silence Radio du Preneur d'Otage</div>
                     <div class="theory-link-tag">Lien Théorique : Mode d'Emploi des Procédures (Étape 3 & 4)</div>
@@ -413,7 +486,11 @@
                 <div class="scenario-card">
                     <div class="scenario-header-flex">
                         <span class="scenario-number">Cas Pratique 05</span>
-                        <span class="scoring-badge">Barème : 0 | 0.5 | 1 Pt</span>
+                        <div class="score-buttons" data-case="5">
+                            <button class="btn-score" onclick="setScore(5, 0, this)">0 pt</button>
+                            <button class="btn-score" onclick="setScore(5, 0.5, this)">0.5 pt</button>
+                            <button class="btn-score" onclick="setScore(5, 1, this)">1 pt</button>
+                        </div>
                     </div>
                     <div class="scenario-title">Conflit de Commandement sur le Terrain</div>
                     <div class="theory-link-tag">Lien Théorique : Doctrine & Rôle de la BNC (Transition BRA)</div>
@@ -425,7 +502,11 @@
                 <div class="scenario-card">
                     <div class="scenario-header-flex">
                         <span class="scenario-number">Cas Pratique 06</span>
-                        <span class="scoring-badge">Barème : 0 | 0.5 | 1 Pt</span>
+                        <div class="score-buttons" data-case="6">
+                            <button class="btn-score" onclick="setScore(6, 0, this)">0 pt</button>
+                            <button class="btn-score" onclick="setScore(6, 0.5, this)">0.5 pt</button>
+                            <button class="btn-score" onclick="setScore(6, 1, this)">1 pt</button>
+                        </div>
                     </div>
                     <div class="scenario-title">Infiltration d'un Faux Otage</div>
                     <div class="theory-link-tag">Lien Théorique : Mode d'Emploi des Procédures (Étape 2 & 5)</div>
@@ -437,7 +518,11 @@
                 <div class="scenario-card">
                     <div class="scenario-header-flex">
                         <span class="scenario-number">Cas Pratique 07</span>
-                        <span class="scoring-badge">Barème : 0 | 0.5 | 1 Pt</span>
+                        <div class="score-buttons" data-case="7">
+                            <button class="btn-score" onclick="setScore(7, 0, this)">0 pt</button>
+                            <button class="btn-score" onclick="setScore(7, 0.5, this)">0.5 pt</button>
+                            <button class="btn-score" onclick="setScore(7, 1, this)">1 pt</button>
+                        </div>
                     </div>
                     <div class="scenario-title">Revendications Politiques ou Frontalières</div>
                     <div class="theory-link-tag">Lien Théorique : Lignes Rouges & Concessions</div>
@@ -449,7 +534,11 @@
                 <div class="scenario-card">
                     <div class="scenario-header-flex">
                         <span class="scenario-number">Cas Pratique 08</span>
-                        <span class="scoring-badge">Barème : 0 | 0.5 | 1 Pt</span>
+                        <div class="score-buttons" data-case="8">
+                            <button class="btn-score" onclick="setScore(8, 0, this)">0 pt</button>
+                            <button class="btn-score" onclick="setScore(8, 0.5, this)">0.5 pt</button>
+                            <button class="btn-score" onclick="setScore(8, 1, this)">1 pt</button>
+                        </div>
                     </div>
                     <div class="scenario-title">Le Piège de la Reddition Feinte</div>
                     <div class="theory-link-tag">Lien Théorique : Règle Fondamentale de Résolution</div>
@@ -467,6 +556,34 @@
         </footer>
 
     </div>
+
+    <!-- SCRIPT DE CALCUL DYNAMIQUE DES POINTS -->
+    <script>
+        const scores = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0 };
+
+        function setScore(caseId, points, btnElement) {
+            scores[caseId] = points;
+
+            // Retirer la classe 'selected' des autres boutons du même cas
+            const parent = btnElement.parentElement;
+            const buttons = parent.querySelectorAll('.btn-score');
+            buttons.forEach(btn => btn.classList.remove('selected'));
+
+            // Sélectionner le bouton cliqué
+            btnElement.classList.add('selected');
+
+            // Calcul du total
+            let total = 0;
+            for (let key in scores) {
+                total += scores[key];
+            }
+
+            // Mise à jour de l'affichage
+            document.getElementById('total-score').innerText = total.toFixed(1);
+            const percentage = Math.round((total / 8) * 100);
+            document.getElementById('score-percent').innerText = '(' + percentage + '%)';
+        }
+    </script>
 
 </body>
 </html>
