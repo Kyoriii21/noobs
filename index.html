@@ -199,25 +199,6 @@
             font-size: 0.75rem;
         }
 
-        /* Styles spécifiques pour les étapes de procédure évaluables */
-        .proc-item {
-            background: rgba(5, 10, 6, 0.6);
-            border: 1px solid var(--border-green);
-            padding: 12px 15px;
-            border-radius: 4px;
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .proc-content {
-            flex: 1;
-            font-size: 0.88rem;
-        }
-
         /* Section des Mises en Situation (Scrollbar interne) */
         .scenarios-container {
             max-height: 750px;
@@ -373,8 +354,8 @@
 
         <!-- WIDGET SCORE TOTAL CALCULÉ AUTOMATIQUEMENT -->
         <div class="score-counter-widget">
-            <div class="score-title">📊 Évaluation Opérationnelle &bull; Score Global :</div>
-            <div class="score-value"><span id="total-score">0.0</span> / 14.0 <span id="score-percent" style="font-size: 0.9rem; color: var(--text-muted);">(0%)</span></div>
+            <div class="score-title">📊 Évaluation Opérationnelle &bull; Score Négociateur :</div>
+            <div class="score-value"><span id="total-score">0.0</span> / 8.0 <span id="score-percent" style="font-size: 0.9rem; color: var(--text-muted);">(0%)</span></div>
         </div>
 
         <!-- SECTION TITRE -->
@@ -398,67 +379,14 @@
             <div class="panel" id="procedures">
                 <h3>02. Mode d'Emploi des Procédures</h3>
                 <p style="margin-bottom: 15px;">Le protocole d'intervention de la BNC suit une chronologie stricte en 6 étapes clés :</p>
-                
-                <!-- ÉTAPE 1 -->
-                <div class="proc-item">
-                    <div class="proc-content"><strong>Étape 1 :</strong> Sécurisation immédiate du périmètre par les unités patrouilleuses.</div>
-                    <div class="score-buttons" data-proc="1">
-                        <button class="btn-score" onclick="setProcScore(1, 0, this)">0 pt</button>
-                        <button class="btn-score" onclick="setProcScore(1, 0.5, this)">0.5 pt</button>
-                        <button class="btn-score" onclick="setProcScore(1, 1, this)">1 pt</button>
-                    </div>
-                </div>
-
-                <!-- ÉTAPE 2 -->
-                <div class="proc-item">
-                    <div class="proc-content"><strong>Étape 2 :</strong> Évaluation de la menace et de l'identité des preneurs d'otages.</div>
-                    <div class="score-buttons" data-proc="2">
-                        <button class="btn-score" onclick="setProcScore(2, 0, this)">0 pt</button>
-                        <button class="btn-score" onclick="setProcScore(2, 0.5, this)">0.5 pt</button>
-                        <button class="btn-score" onclick="setProcScore(2, 1, this)">1 pt</button>
-                    </div>
-                </div>
-
-                <!-- ÉTAPE 3 -->
-                <div class="proc-item">
-                    <div class="proc-content"><strong>Étape 3 :</strong> Activation de la BNC et prise de contact radio/mégaphone.</div>
-                    <div class="score-buttons" data-proc="3">
-                        <button class="btn-score" onclick="setProcScore(3, 0, this)">0 pt</button>
-                        <button class="btn-score" onclick="setProcScore(3, 0.5, this)">0.5 pt</button>
-                        <button class="btn-score" onclick="setProcScore(3, 1, this)">1 pt</button>
-                    </div>
-                </div>
-
-                <!-- ÉTAPE 4 -->
-                <div class="proc-item">
-                    <div class="proc-content"><strong>Étape 4 :</strong> Établissement du lien de confiance et écoute active (identification des leviers).</div>
-                    <div class="score-buttons" data-proc="4">
-                        <button class="btn-score" onclick="setProcScore(4, 0, this)">0 pt</button>
-                        <button class="btn-score" onclick="setProcScore(4, 0.5, this)">0.5 pt</button>
-                        <button class="btn-score" onclick="setProcScore(4, 1, this)">1 pt</button>
-                    </div>
-                </div>
-
-                <!-- ÉTAPE 5 -->
-                <div class="proc-item">
-                    <div class="proc-content"><strong>Étape 5 :</strong> Analyse constante des revendications (concession vs ligne rouge).</div>
-                    <div class="score-buttons" data-proc="5">
-                        <button class="btn-score" onclick="setProcScore(5, 0, this)">0 pt</button>
-                        <button class="btn-score" onclick="setProcScore(5, 0.5, this)">0.5 pt</button>
-                        <button class="btn-score" onclick="setProcScore(5, 1, this)">1 pt</button>
-                    </div>
-                </div>
-
-                <!-- ÉTAPE 6 -->
-                <div class="proc-item">
-                    <div class="proc-content"><strong>Étape 6 :</strong> Transmission de l'intelligence tactique au commandement pour la décision finale.</div>
-                    <div class="score-buttons" data-proc="6">
-                        <button class="btn-score" onclick="setProcScore(6, 0, this)">0 pt</button>
-                        <button class="btn-score" onclick="setProcScore(6, 0.5, this)">0.5 pt</button>
-                        <button class="btn-score" onclick="setProcScore(6, 1, this)">1 pt</button>
-                    </div>
-                </div>
-
+                <ul>
+                    <li><strong>Étape 1 :</strong> Sécurisation immédiate du périmètre par les unités patrouilleuses.</li>
+                    <li><strong>Étape 2 :</strong> Évaluation de la menace et de l'identité des preneurs d'otages.</li>
+                    <li><strong>Étape 3 :</strong> Activation de la BNC et prise de contact radio/mégaphone.</li>
+                    <li><strong>Étape 4 :</strong> Établissement du lien de confiance et écoute active (identification des leviers).</li>
+                    <li><strong>Étape 5 :</strong> Analyse constante des revendications (concession vs ligne rouge).</li>
+                    <li><strong>Étape 6 :</strong> Transmission de l'intelligence tactique au commandement pour la décision finale.</li>
+                </ul>
             </div>
         </div>
 
@@ -495,14 +423,14 @@
                     <div class="scenario-header-flex">
                         <span class="scenario-number">Cas Pratique 01</span>
                         <div class="score-buttons" data-case="1">
-                            <button class="btn-score" onclick="setCaseScore(1, 0, this)">0 pt</button>
-                            <button class="btn-score" onclick="setCaseScore(1, 0.5, this)">0.5 pt</button>
-                            <button class="btn-score" onclick="setCaseScore(1, 1, this)">1 pt</button>
+                            <button class="btn-score" onclick="setScore(1, 0, this)">0 pt</button>
+                            <button class="btn-score" onclick="setScore(1, 0.5, this)">0.5 pt</button>
+                            <button class="btn-score" onclick="setScore(1, 1, this)">1 pt</button>
                         </div>
                     </div>
                     <div class="scenario-title">La Pression Psychologique & Exigence Immédiate</div>
                     <div class="theory-link-tag">Lien Théorique : Lignes Rouges & Concessions</div>
-                    <div class="scenario-box"><strong>Contexte :</strong> Un preneur d'otage cagoulé pointe une arme sur la tempe d'un agent du SABP dans une station-service frontalière. Il hurle qu'il abattra l'otage dans les 60 secondes si vous ne lui fournissez pas un hélicoptère immédiatement.</div>
+                    <div class="scenario-box"><strong>Contexte :</strong> Un preneur d'otage cagoulé pointe une arme sur la tempe d'un agent du SABP dans une station-service frontalière. Il hurle qu'il abattra l'otage dans les 60 secondes si vous ne lui fournissez pas un hélicoptère armé immédiatement.</div>
                     <div class="scenario-question"><strong>Problématique :</strong> Comment gérez-vous le compte à rebours sans céder à la ligne rouge tout en évitant l'exécution ?</div>
                 </div>
 
@@ -511,15 +439,15 @@
                     <div class="scenario-header-flex">
                         <span class="scenario-number">Cas Pratique 02</span>
                         <div class="score-buttons" data-case="2">
-                            <button class="btn-score" onclick="setCaseScore(2, 0, this)">0 pt</button>
-                            <button class="btn-score" onclick="setCaseScore(2, 0.5, this)">0.5 pt</button>
-                            <button class="btn-score" onclick="setCaseScore(2, 1, this)">1 pt</button>
+                            <button class="btn-score" onclick="setScore(2, 0, this)">0 pt</button>
+                            <button class="btn-score" onclick="setScore(2, 0.5, this)">0.5 pt</button>
+                            <button class="btn-score" onclick="setScore(2, 1, this)">1 pt</button>
                         </div>
                     </div>
                     <div class="scenario-title">Le Suspect Irrationnel / Instable</div>
                     <div class="theory-link-tag">Lien Théorique : Techniques d'Écoute Active</div>
                     <div class="scenario-box"><strong>Contexte :</strong> Le ravisseur semble complètement paniqué, sous l'influence évidente de substances ou de troubles aigus. Il change d'avis toutes les dix minutes et menace de tout faire sauter de manière imprévisible.</div>
-                    <div class="scenario-question"><strong>Problématique :</strong> Quelle posture verbale adoptez-vous pour stabiliser son attention et de ramener le calme dans la prise d'otage ?</div>
+                    <div class="scenario-question"><strong>Problématique :</strong> Quelle posture verbale adoptez-vous pour stabiliser son attention et ramener un semblant de rationalité ?</div>
                 </div>
 
                 <!-- CAS 03 -->
@@ -527,15 +455,15 @@
                     <div class="scenario-header-flex">
                         <span class="scenario-number">Cas Pratique 03</span>
                         <div class="score-buttons" data-case="3">
-                            <button class="btn-score" onclick="setCaseScore(3, 0, this)">0 pt</button>
-                            <button class="btn-score" onclick="setCaseScore(3, 0.5, this)">0.5 pt</button>
-                            <button class="btn-score" onclick="setCaseScore(3, 1, this)">1 pt</button>
+                            <button class="btn-score" onclick="setScore(3, 0, this)">0 pt</button>
+                            <button class="btn-score" onclick="setScore(3, 0.5, this)">0.5 pt</button>
+                            <button class="btn-score" onclick="setScore(3, 1, this)">1 pt</button>
                         </div>
                     </div>
-                    <div class="scenario-title">Informations contradictoires</div>
-                    <div class="theory-link-tag">Lien Théorique : Chaîne de commandement et procédure opérationnelle</div>
-                    <div class="scenario-box"><strong>Contexte :</strong>  Lors d’une intervention, un agent du SABP transmet par radio des informations contradictoires sur la position des suspects. Quelques minutes plus tard, vous apprenez qu’il a quitté son secteur sans autorisation et qu’il ne répond plus aux appels radio.</div>
-                    <div class="scenario-question"><strong>Problématique :</strong> Quelles mesures prenez-vous pour assurer la sécurité de l’équipe, vérifier la situation de l’agent et organiser la suite de l’intervention ?</div>
+                    <div class="scenario-title">Demande de Fuite avec Bouclier Humain</div>
+                    <div class="theory-link-tag">Lien Théorique : Règle Fondamentale de Résolution</div>
+                    <div class="scenario-box"><strong>Contexte :</strong> Les preneurs d'otages acceptent de libérer l'agent du SABP retenu, mais exigent de repartir à bord d'un véhicule blindé en ayant attaché un civil sur le capot comme bouclier humain pour traverser le barrage.</div>
+                    <div class="scenario-question"><strong>Problématique :</strong> Acceptez-vous cette condition ? Quelles contre-propositions tactiques formulez-vous ?</div>
                 </div>
 
                 <!-- CAS 04 -->
@@ -543,9 +471,9 @@
                     <div class="scenario-header-flex">
                         <span class="scenario-number">Cas Pratique 04</span>
                         <div class="score-buttons" data-case="4">
-                            <button class="btn-score" onclick="setCaseScore(4, 0, this)">0 pt</button>
-                            <button class="btn-score" onclick="setCaseScore(4, 0.5, this)">0.5 pt</button>
-                            <button class="btn-score" onclick="setCaseScore(4, 1, this)">1 pt</button>
+                            <button class="btn-score" onclick="setScore(4, 0, this)">0 pt</button>
+                            <button class="btn-score" onclick="setScore(4, 0.5, this)">0.5 pt</button>
+                            <button class="btn-score" onclick="setScore(4, 1, this)">1 pt</button>
                         </div>
                     </div>
                     <div class="scenario-title">Le Silence Radio du Preneur d'Otage</div>
@@ -559,9 +487,9 @@
                     <div class="scenario-header-flex">
                         <span class="scenario-number">Cas Pratique 05</span>
                         <div class="score-buttons" data-case="5">
-                            <button class="btn-score" onclick="setCaseScore(5, 0, this)">0 pt</button>
-                            <button class="btn-score" onclick="setCaseScore(5, 0.5, this)">0.5 pt</button>
-                            <button class="btn-score" onclick="setCaseScore(5, 1, this)">1 pt</button>
+                            <button class="btn-score" onclick="setScore(5, 0, this)">0 pt</button>
+                            <button class="btn-score" onclick="setScore(5, 0.5, this)">0.5 pt</button>
+                            <button class="btn-score" onclick="setScore(5, 1, this)">1 pt</button>
                         </div>
                     </div>
                     <div class="scenario-title">Conflit de Commandement sur le Terrain</div>
@@ -575,9 +503,9 @@
                     <div class="scenario-header-flex">
                         <span class="scenario-number">Cas Pratique 06</span>
                         <div class="score-buttons" data-case="6">
-                            <button class="btn-score" onclick="setCaseScore(6, 0, this)">0 pt</button>
-                            <button class="btn-score" onclick="setCaseScore(6, 0.5, this)">0.5 pt</button>
-                            <button class="btn-score" onclick="setCaseScore(6, 1, this)">1 pt</button>
+                            <button class="btn-score" onclick="setScore(6, 0, this)">0 pt</button>
+                            <button class="btn-score" onclick="setScore(6, 0.5, this)">0.5 pt</button>
+                            <button class="btn-score" onclick="setScore(6, 1, this)">1 pt</button>
                         </div>
                     </div>
                     <div class="scenario-title">Infiltration d'un Faux Otage</div>
@@ -591,15 +519,15 @@
                     <div class="scenario-header-flex">
                         <span class="scenario-number">Cas Pratique 07</span>
                         <div class="score-buttons" data-case="7">
-                            <button class="btn-score" onclick="setCaseScore(7, 0, this)">0 pt</button>
-                            <button class="btn-score" onclick="setCaseScore(7, 0.5, this)">0.5 pt</button>
-                            <button class="btn-score" onclick="setCaseScore(7, 1, this)">1 pt</button>
+                            <button class="btn-score" onclick="setScore(7, 0, this)">0 pt</button>
+                            <button class="btn-score" onclick="setScore(7, 0.5, this)">0.5 pt</button>
+                            <button class="btn-score" onclick="setScore(7, 1, this)">1 pt</button>
                         </div>
                     </div>
-                    <div class="scenario-title">Prise d'otage pour délivrer son camarade</div>
-                    <div class="theory-link-tag">Lien Théorique : Pression Temporelle & Garanties</div>
-                    <div class="scenario-box"><strong>Contexte :</strong> Un individu retient plusieurs employés d'un bâtiment administratif et menace de les exécuter si les autorités n'acceptent pas de libérer un proche actuellement détenu par le SABP. Il affirme qu'il ne fera aucune concession tant qu'il n'aura pas obtenu une preuve concrète de la bonne foi des négociateurs.</div>
-                    <div class="scenario-question"><strong>Problématique :</strong> Comment gérez-vous les exigences du preneur d'otages tout en maintenant le dialogue, sans céder à une demande qui compromettrait l'autorité du SABP ?</div>
+                    <div class="scenario-title">Revendications Politiques ou Frontalières</div>
+                    <div class="theory-link-tag">Lien Théorique : Lignes Rouges & Concessions</div>
+                    <div class="scenario-box"><strong>Contexte :</strong> Le preneur d'otage se revendique d'un groupe dissident contestant l'autorité du SABP sur la zone frontalière et exige la diffusion d'un manifeste en direct sur les ondes publiques de l'état.</div>
+                    <div class="scenario-question"><strong>Problématique :</strong> Comment traitez-vous une exigence de communication médiatique en pleine gestion de crise ?</div>
                 </div>
 
                 <!-- CAS 08 -->
@@ -607,9 +535,9 @@
                     <div class="scenario-header-flex">
                         <span class="scenario-number">Cas Pratique 08</span>
                         <div class="score-buttons" data-case="8">
-                            <button class="btn-score" onclick="setCaseScore(8, 0, this)">0 pt</button>
-                            <button class="btn-score" onclick="setCaseScore(8, 0.5, this)">0.5 pt</button>
-                            <button class="btn-score" onclick="setCaseScore(8, 1, this)">1 pt</button>
+                            <button class="btn-score" onclick="setScore(8, 0, this)">0 pt</button>
+                            <button class="btn-score" onclick="setScore(8, 0.5, this)">0.5 pt</button>
+                            <button class="btn-score" onclick="setScore(8, 1, this)">1 pt</button>
                         </div>
                     </div>
                     <div class="scenario-title">Le Piège de la Reddition Feinte</div>
@@ -631,42 +559,28 @@
 
     <!-- SCRIPT DE CALCUL DYNAMIQUE DES POINTS -->
     <script>
-        const procScores = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
-        const caseScores = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0 };
+        const scores = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0 };
 
-        function setProcScore(procId, points, btnElement) {
-            procScores[procId] = points;
-            updateUI(btnElement);
-        }
+        function setScore(caseId, points, btnElement) {
+            scores[caseId] = points;
 
-        function setCaseScore(caseId, points, btnElement) {
-            caseScores[caseId] = points;
-            updateUI(btnElement);
-        }
-
-        function updateUI(btnElement) {
-            // Gérer l'état visuel du bouton cliqué
+            // Retirer la classe 'selected' des autres boutons du même cas
             const parent = btnElement.parentElement;
             const buttons = parent.querySelectorAll('.btn-score');
             buttons.forEach(btn => btn.classList.remove('selected'));
+
+            // Sélectionner le bouton cliqué
             btnElement.classList.add('selected');
 
-            // Calculer le total des procédures (sur 6) + cas pratiques (sur 8) = total sur 14
-            let totalProc = 0;
-            for (let key in procScores) {
-                totalProc += procScores[key];
+            // Calcul du total
+            let total = 0;
+            for (let key in scores) {
+                total += scores[key];
             }
 
-            let totalCases = 0;
-            for (let key in caseScores) {
-                totalCases += caseScores[key];
-            }
-
-            let total = totalProc + totalCases;
-
-            // Mise à jour de l'affichage global
+            // Mise à jour de l'affichage
             document.getElementById('total-score').innerText = total.toFixed(1);
-            const percentage = Math.round((total / 14) * 100);
+            const percentage = Math.round((total / 8) * 100);
             document.getElementById('score-percent').innerText = '(' + percentage + '%)';
         }
     </script>
